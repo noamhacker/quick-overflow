@@ -16,11 +16,13 @@
     	"activeTab",
     	"https://ajax.googleapis.com/"
   	],
+  	"web_accessible_resources": ["error_reporter.js"],
   	"content_scripts": [
   		{
   			"matches": ["<all_urls>"],
   			"css": ["mystyles.css"],
-  			"js": ["inject.js"]
+  			"js": ["inject.js"],
+  			"run_at": "document_idle"
   		}
   	]
 }
