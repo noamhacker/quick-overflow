@@ -1,65 +1,70 @@
 <html>
-	<head>
-	</head>
-	<style>
-	.onoffswitch {
-	    position: relative; width: 122px;
-	    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
-	}
-	.onoffswitch-checkbox {
-	    display: none;
-	}
-	.onoffswitch-label {
-	    display: block; overflow: hidden; cursor: pointer;
-	    border: 2px solid #999999; border-radius: 20px;
-	}
-	.onoffswitch-inner {
-	    display: block; width: 200%; margin-left: -100%;
-	    transition: margin 0.3s ease-in 0s;
-	}
-	.onoffswitch-inner:before, .onoffswitch-inner:after {
-	    display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
-	    font-size: 16px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
-	    box-sizing: border-box;
-	}
-	.onoffswitch-inner:before {
-	    content: "Enabled";
-	    padding-left: 15px;
-	    background-color: #1DCC4E; color: #FFFFFF;
-	}
-	.onoffswitch-inner:after {
-	    content: "Disabled";
-	    padding-right: 15px;
-	    background-color: #EEEEEE; color: #999999;
-	    text-align: right;
-	}
-	.onoffswitch-switch {
-	    display: block; width: 30px; margin: 0px;
-	    background: #FFFFFF;
-	    position: absolute; top: 0; bottom: 0;
-	    right: 88px;
-	    border: 2px solid #999999; border-radius: 20px;
-	    transition: all 0.3s ease-in 0s; 
-	}
-	.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
-	    margin-left: 0;
-	}
-	.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
-	    right: 0px; 
-	}
-	</style>
-	<body>
-		<div style="width:140px;">
-			<h3>Quick Overflow</h3>
-			<!-- https://proto.io/freebies/onoff/ -->
-			<div class="onoffswitch">
-				<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="state">
-			    <label class="onoffswitch-label" for="state">
-			        <span class="onoffswitch-inner"></span>
-			        <span class="onoffswitch-switch"></span>
-			    </label>
-			</div>
-		</div>
-		<script src="popup.js"></script>
-	</body>
+    <head>
+    </head>
+    <body>
+        <div style="width:140px;">
+	        <h1>Quick Overflow</h1>
+	        <h3>Enable/disable</h3>
+	        <!-- https://proto.io/freebies/onoff/ -->
+	        <div class="switch">
+	          	<input id="state" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
+	          	<label for="state"></label>
+	        </div>
+      </div>
+      <script src="popup.js"></script>
+   	</body>
+   	<!-- thanks http://callmenick.com/post/css-toggle-switch-examples -->
+    <style>
+    .cmn-toggle {
+    	position: absolute;
+    	margin-left: -9999px;
+    	visibility: hidden;
+    }
+    .cmn-toggle + label {
+    	display: block;
+    	position: relative;
+    	cursor: pointer;
+    	outline: none;
+    	user-select: none;
+    }
+    input.cmn-toggle-round-flat + label {
+    	padding: 2px;
+    	width: 120px;
+    	height: 60px;
+    	background-color: #dddddd;
+    	border-radius: 60px;
+    	transition: background 0.4s;
+    }
+    input.cmn-toggle-round-flat + label:before,
+    input.cmn-toggle-round-flat + label:after {
+    	display: block;
+    	position: absolute;
+    	content: "";
+    }
+    input.cmn-toggle-round-flat + label:before {
+    	top: 2px;
+    	left: 2px;
+    	bottom: 2px;
+    	right: 2px;
+    	background-color: #fff;
+    	border-radius: 60px;
+    	transition: background 0.4s;
+    }
+    input.cmn-toggle-round-flat + label:after {
+    	top: 4px;
+    	left: 4px;
+    	bottom: 4px;
+    	width: 52px;
+    	background-color: #dddddd;
+    	border-radius: 52px;
+    	transition: margin 0.4s, background 0.4s;
+    }
+    input.cmn-toggle-round-flat:checked + label {
+    	background-color: #8ce196;
+    }
+    input.cmn-toggle-round-flat:checked + label:after {
+    	margin-left: 60px;
+    	background-color: #8ce196;
+    }
+    </style>
 </html>
