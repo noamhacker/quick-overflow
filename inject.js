@@ -36,9 +36,13 @@ function createDiv(e){
 	div.style.background = "orange";
 	div.style.color = "white";
 	//div.style.z-index = 
+	// console.log("error")
+	// console.log(e)
 	var stack = e.detail.stack;
-	if(stack.length > 0){
-		var cause = stack.substring(stack.indexOf(e.detail.message) + e.detail.message.length);
+	var cause = ""
+	if (!(typeof stack === 'undefined'))
+	{
+		cause = stack.substring(stack.indexOf(e.detail.message) + e.detail.message.length);
 		if (cause.length > 0)
 		{	
 			cause = cause.substring(0, cause.indexOf('(file://') - 1)
@@ -68,14 +72,27 @@ function codeToInject() {
     window.addEventListener('error', function(e) {
     	//build an error object
     	console.log(e)
-        var error = {
-        	title: (e.error.stack).substring(0, e.error.stack.indexOf(':')),
-        	message: e.error.message,
-            stack: e.error.stack,
-            filename: e.filename,
-            lineNumber: e.lineno
-            // Add here any other properties you need, like e.filename, etc...
-        };
+        if (!(typeof e.error.stack === 'undefined')) //if it is one of the common errors
+        {
+	        var error = {
+	        	title: (e.error.stack).substring(0, e.error.stack.indexOf(':')),
+	        	message: e.error.message,
+	            stack: e.error.stack,
+	            filename: e.filename,
+	            lineNumber: e.lineno
+	            // Add here any other properties you need, like e.filename, etc...
+	        }
+	    }
+	    else //it must be a thrown error
+	    {
+	    	var error = {
+	    		title: e.error.name,
+	        	message: e.error.message,
+	            filename: e.filename,
+	            lineNumber: e.lineno
+	            // Add here any other properties you need, like e.filename, etc...
+	        }
+	    }
         //dispatch a message to a listener in the content script
         document.dispatchEvent(new CustomEvent('ReportError', {detail:error}));
     });
