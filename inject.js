@@ -32,16 +32,29 @@ function inject_listen_insert()
 function createDiv(e){
 	var div = document.createElement("div");
 	div.style.width = "100%";
-	div.style.height = "100px";
-	div.style.background = "red";
+	//div.style.height = "100px";
+	div.style.background = "orange";
 	div.style.color = "white";
 	//div.style.z-index = 
-	div.innerHTML = '<h3>' + e.detail.title + '</h3>' + e.detail.message + '<br>' + e.detail.filename + '<br>Line: ' + e.detail.lineNumber;
+	var stack = e.detail.stack;
+	var cause = stack.substring(stack.indexOf(e.detail.message) + e.detail.message.length);
+	if (cause.length > 0)
+		cause += stack.substring(cause.length, (stack.indexOf(e.detail.filename) - 1) )
+	var url = "http://stackoverflow.com/search?q=" + e.detail.title + ' ' + e.detail.message;
+	url = url.split(' ').join('+');
+	url += '+[javascript][html]';
+	div.innerHTML = '<a href="' + url + '" target="_blank"><h3>' 
+			+ e.detail.title + '</h3>' 
+			+ e.detail.message + '</a><br>' 
+			+ cause + '<br><br>'
+			+ e.detail.filename + '<br>Line: ' 
+			+ e.detail.lineNumber;
 	//document.body.appendChild(div);
 	//want to prepend instead of append... http://callmenick.com/post/prepend-child-javascript
 	var body = document.querySelector("body");
 	body.insertBefore(div, body.firstChild);
 }
+
 
 //not magic. this code is injected and run in the user's webpage
 //http://stackoverflow.com/questions/20323600/how-to-get-errors-stack-trace-in-chrome-extension-content-script
