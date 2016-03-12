@@ -1,0 +1,37 @@
+<button onclick="myFunction()">ReferenceError</button>
+<button onclick="myFunction2()">TypeError</button>
+<button onclick="throwSomething()">throw</button>
+<script>
+
+// Create an object type UserException
+function UserException(message) {
+  this.message = message;
+  this.name = "UserException";
+}
+// Make the exception convert to a pretty string when used as a string 
+// (e.g. by the error console)
+UserException.prototype.toString = function() {
+  return this.name + ': "' + this.message + '"';
+}
+function throwSomething(){
+	// Create an instance of the object type and throw it
+	throw new UserException("Value too high");
+}
+
+//console.log("hi)
+
+
+
+
+function myFunction2(){
+	myArray = [];
+	myString = myArray[0]
+	myString.substring(0,5);
+}
+
+
+
+//HELPFUL
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling#Exception_Handling_Statements
+</script>

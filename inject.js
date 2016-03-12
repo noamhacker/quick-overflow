@@ -37,9 +37,13 @@ function createDiv(e){
 	div.style.color = "white";
 	//div.style.z-index = 
 	var stack = e.detail.stack;
-	var cause = stack.substring(stack.indexOf(e.detail.message) + e.detail.message.length);
-	if (cause.length > 0)
-		cause += stack.substring(cause.length, (stack.indexOf(e.detail.filename) - 1) )
+	if(stack.length > 0){
+		var cause = stack.substring(stack.indexOf(e.detail.message) + e.detail.message.length);
+		if (cause.length > 0)
+		{	
+			cause = cause.substring(0, cause.indexOf('(file://') - 1)
+		}
+	}
 	var url = "http://stackoverflow.com/search?q=" + e.detail.title + ' ' + e.detail.message;
 	url = url.split(' ').join('+');
 	url += '+[javascript][html]';
