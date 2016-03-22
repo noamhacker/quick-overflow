@@ -13,10 +13,13 @@
     	"https://ajax.googleapis.com/",
     	"storage"
   	],
+    "web_accessible_resources": [
+      "custom.css"
+    ],
   	"content_scripts": [
   		{
   			"matches": ["<all_urls>"],
-  			"css": ["mystyles.css"],
+  			"css": ["custom.css"],
   			"js": ["inject.js"],
   			"run_at": "document_start"
   		}

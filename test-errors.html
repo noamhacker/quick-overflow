@@ -1,6 +1,9 @@
 <button onclick="myFunction()">ReferenceError</button>
 <button onclick="myFunction2()">TypeError</button>
-<button onclick="throwSomething()">throw</button>
+<button onclick="myFunction3()">RangeError</button>
+<button onclick="myFunction4()">RangeError 2</button>
+<button onclick="myFunction5()">URIeError</button>
+<button onclick="throwSomething()">Throw Custom Error</button>
 <script>
 
 // Create an object type UserException
@@ -29,6 +32,17 @@ function myFunction2(){
 	myString.substring(0,5);
 }
 
+function myFunction3(){
+	myFunction3();
+}
+
+function myFunction4(){
+	var x = new Array(0.5);
+}
+
+function myFunction5(){
+	x = encodeURI('\uD800')
+}
 
 
 //HELPFUL
