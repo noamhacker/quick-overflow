@@ -1,3 +1,9 @@
+// features to add:
+	// reading files from external URLs (better for non-local)
+	// smarter searching for errors on stack overflow
+	// integration with Syntax Center, other APIs
+
+
 var is_enabled = ""
 
 inject_listen_insert();
@@ -15,7 +21,7 @@ function inject_listen_insert(){
 	// listen for a message from the injected code
 	document.addEventListener('ReportError', function(e) {
 		// retrieve error
-	    console.log('CONTENT SCRIPT', e.detail.stack, e.detail.filename, e.detail.lineNumber);
+	    // console.log('CONTENT SCRIPT', e.detail.stack, e.detail.filename, e.detail.lineNumber);
 	    // format the error and insert into page - ONLY if extension is enabled
 	    chrome.storage.local.get('enabled', function(result){
 			is_enabled = result.enabled;
@@ -122,7 +128,7 @@ function codeToInject(){
 	// listen for an error
     window.addEventListener('error', function(e) {
     	// build an error object
-    	console.log(e)
+    	// console.log(e)
         if (!(typeof e.error.stack === 'undefined')) //if it is one of the common errors
         {
 	        var error = {
