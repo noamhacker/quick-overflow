@@ -2,8 +2,7 @@ var is_enabled = ""
 
 inject_listen_insert();
 
-function inject_listen_insert()
-{
+function inject_listen_insert(){
 	//Inject code...
 	//create script element
 	var script = document.createElement('script');
@@ -30,6 +29,11 @@ function inject_listen_insert()
 }
 
 function createDiv(e){
+
+	var script = document.createElement("SCRIPT");
+	var hideFunction = document.createTextNode("function hideElement(element){element.parentNode.parentNode.parentNode.parentNode.parentNode.remove()}");
+	script.appendChild(hideFunction);
+
 	var div = document.createElement("div");
 
 	div.setAttribute('style',  'box-shadow: 10px 10px 40px #888888; \
@@ -75,9 +79,9 @@ function createDiv(e){
 	url = url.split(' ').join('+');
 	url += '+[javascript]';
 	var fontString_monospace = "'Courier New', Courier, monospace;"
-	div.innerHTML = '<a href="' + url + '" target="_blank"><q_o_title>Uncaught ' 
+	div.innerHTML = '<table style="width:98%"><tr><td><a href="' + url + '" target="_blank"><q_o_title>Uncaught ' 
 			+ e.detail.title + '</q_o_title><br>' 
-			+ e.detail.message + '</a><br>' 
+			+ e.detail.message + '</a></td><td style="text-align:right"><button onclick="hideElement(this)">Dismiss</button></td></tr></table><br>' 
 			+ "Error caused by: <br><br>"
 			+ '<span id="bad_code_here" style="font-family:' + fontString_monospace 
 						+ ' color:red; font-size:18px; border:1px solid red; border-radius:10px; padding:10px;"></span><br><br>'
@@ -88,18 +92,19 @@ function createDiv(e){
 	//document.body.appendChild(div); - this is not what we want
 	//want to prepend instead of append... http://callmenick.com/post/prepend-child-javascript
 	var body = document.querySelector("body");
+	body.insertBefore(script, body.firstChild);
 	body.insertBefore(div, body.firstChild);
 
 	//we don't want to render the html that is in the bad code, just the text, so we must use textContent
 	document.getElementById("bad_code_here").textContent = badCode;
-	
+	// function hideElement(){alert("yo")}
 }
 
 
 //not magic. this code is injected and run in the user's webpage
 //http://stackoverflow.com/questions/20323600/how-to-get-errors-stack-trace-in-chrome-extension-content-script
 //codeToInject definition:
-function codeToInject() {
+function codeToInject(){
 	//listen for an error
     window.addEventListener('error', function(e) {
     	//build an error object
@@ -132,8 +137,7 @@ function codeToInject() {
 
 
 //thanks http://stackoverflow.com/questions/14446447/javascript-read-local-text-file
-function readTextFile(file)
-{
+function readTextFile(file){
 	var allText = "";
     var rawFile = new XMLHttpRequest();
     rawFile.open("GET", file, false);
