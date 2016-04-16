@@ -6,48 +6,47 @@
 	<button onclick="myFunction5()">URIeError</button>
 	<button onclick="throwSomething()">Throw Custom Error</button>
 </body>
+<script src="test-errors.js"></script>
 <script>
+	// Create an object type UserException
+	function UserException(message) {
+	  this.message = message;
+	  this.name = "UserException";
+	}
+	// Make the exception convert to a pretty string when used as a string 
+	// (e.g. by the error console)
+	UserException.prototype.toString = function() {
+	  return this.name + ': "' + this.message + '"';
+	}
+	function throwSomething(){
+		// Create an instance of the object type and throw it
+		throw new UserException("Value too high");
+	}
 
-// Create an object type UserException
-function UserException(message) {
-  this.message = message;
-  this.name = "UserException";
-}
-// Make the exception convert to a pretty string when used as a string 
-// (e.g. by the error console)
-UserException.prototype.toString = function() {
-  return this.name + ': "' + this.message + '"';
-}
-function throwSomething(){
-	// Create an instance of the object type and throw it
-	throw new UserException("Value too high");
-}
-
-//console.log("hi)
-
+	//console.log("hi)
 
 
 
-function myFunction2(){
-	myArray = [];
-	myString = myArray[0]
-	myString.substring(0,5);
-}
 
-function myFunction3(){
-	myFunction3();
-}
+	function myFunction2(){
+		myArray = [];
+		myString = myArray[0]
+		myString.substring(0,5);
+	}
 
-function myFunction4(){
-	var x = new Array(0.5);
-}
+	function myFunction3(){
+		myFunction3();
+	}
 
-function myFunction5(){
-	x = encodeURI('\uD800')
-}
+	function myFunction4(){
+		var x = new Array(0.5);
+	}
 
+	function myFunction5(){
+		x = encodeURI('\uD800')
+	}
 
-//HELPFUL
-//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error
-//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling#Exception_Handling_Statements
+	//HELPFUL
+	//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error
+	//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling#Exception_Handling_Statements
 </script>
