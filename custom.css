@@ -1,3 +1,53 @@
+head {
+	display: block;
+}
+
 q_o_title {
 	font-size: 24px;
 }
+
+.extension_module {
+	margin-top: 10px;
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	border: 1px solid red;
+	box-shadow: 10px 10px 40px #888888;
+	z-index: 99;
+	background-color: #ffb734;
+	border-radius: 25px;
+	padding: 20px;
+	margin-bottom: 20px;
+}
+
+/* ensure styles of module are separate from styles of the webpage the module is on */
+.extension_module table {}
+.extension_module table tbody {}
+.extension_module table tbody tr {}
+.extension_module table tbody tr td {}
+.extension_module table tbody tr td a, span.link {
+  color: blue;
+}
+.extension_module table tbody tr td a:visited, span.visited {
+   color: purple;
+}
+.extension_module table tbody tr td a:active, span.active {
+   color: red;
+}
+.extension_module table tbody tr td button {
+	border: none;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0px;
+	font-family: Arial;
+	color: #ffffff;
+	font-size: 14px;
+	background: #e63333;
+	padding: 10px 10px 10px 10px;
+	text-decoration: none;
+}
+.extension_module table tbody tr td button:hover {
+	background: #e64c4c;
+    text-decoration: none;
+}
+.extension_module div {}

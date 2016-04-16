@@ -30,19 +30,16 @@ function inject_listen_insert(){
 
 function createDiv(e){
 
-	var script = document.createElement("SCRIPT");
-	var hideFunction = document.createTextNode("function hideElement(element){element.parentNode.parentNode.parentNode.parentNode.parentNode.remove()}");
-	script.appendChild(hideFunction);
-
 	var div = document.createElement("div");
 
-	div.setAttribute('style',  'box-shadow: 10px 10px 40px #888888; \
-								z-index: 99; \
-								background-color: #ffb734; \
-								border-radius: 25px; \
-								padding: 20px; \
-								margin-bottom: 20px; \
-								');
+	// div.setAttribute('style',  'box-shadow: 10px 10px 40px #888888; \
+	// 							z-index: 99; \
+	// 							background-color: #ffb734; \
+	// 							border-radius: 25px; \
+	// 							padding: 20px; \
+	// 							margin-bottom: 20px; \
+	// 							');
+	div.setAttribute('class', "extension_module");
 	//div.style.width = "100%";
 	div.style.fontFamily = 'Arial Bold,Arial,sans-serif'; 
 
@@ -83,15 +80,25 @@ function createDiv(e){
 			+ e.detail.title + '</q_o_title><br>' 
 			+ e.detail.message + '</a></td><td style="text-align:right"><button onclick="hideElement(this)">Dismiss</button></td></tr></table><br>' 
 			+ "Error caused by: <br><br>"
-			+ '<span id="bad_code_here" style="font-family:' + fontString_monospace 
-						+ ' color:red; font-size:18px; border:1px solid red; border-radius:10px; padding:10px;"></span><br><br>'
+			+ '<div id="bad_code_here" style="font-family:' + fontString_monospace 
+						+ ' color:red; font-size:18px; border:1px solid red; border-radius:10px; padding:10px;"></div><br><br>'
 			+ cause + "<br>"
 			+ e.detail.filename + '<br>Line: ' 
 			+ e.detail.lineNumber;
 	
+	// create a function to hide the div
+	var script = document.createElement("SCRIPT");
+	var hideFunction = document.createTextNode("function hideElement(element){element.parentNode.parentNode.parentNode.parentNode.parentNode.remove()}");
+	script.appendChild(hideFunction);
+
+	// add a blank span to the head so we can append our module to the head (in case the head is empty)
+	var empty_span = document.createElement("span")
+	empty_span.setAttribute("class", "ignore_me")
+	document.head.appendChild(empty_span)
+
 	//document.body.appendChild(div); - this is not what we want
 	//want to prepend instead of append... http://callmenick.com/post/prepend-child-javascript
-	var body = document.querySelector("body");
+	var body = document.querySelector("head");
 	body.insertBefore(script, body.firstChild);
 	body.insertBefore(div, body.firstChild);
 
