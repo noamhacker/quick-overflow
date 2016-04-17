@@ -71,11 +71,11 @@ function createDiv(e){
 			badCode = lines[e.detail.lineNumber - 1]
 		}
 		else
-			badCode = "Source code file not accessible. For best results, develop locally within <script> tags."
+			badCode = "Source code file unreadable. For best results, develop locally within <script> tags."
 	}
 	else
 	{
-		badCode = "Source code file not accessible. For best results, develop locally within <script> tags."
+		badCode = "Source code file unreadable. For best results, develop locally within <script> tags."
 	}
 	var cause = "";
 	if (!(typeof stack === 'undefined'))
@@ -99,7 +99,7 @@ function createDiv(e){
 			+ '<div id="bad_code_here" style="font-family:' + fontString_monospace 
 						+ ' color:red; font-size:18px; border:1px solid red; border-radius:10px; padding:10px;"></div><br>'
 			+ cause + "<br>"
-			+ '<table style="width:100%;"><tr><td>' + e.detail.filename + '</td><td>Line: ' 
+			+ '<table style="width:100%;"><tr><td>From: ' + e.detail.filename + '</td><td>Line: ' 
 			+ e.detail.lineNumber + '</td></tr></table>';
 	
 	// create a function to hide the div
