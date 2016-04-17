@@ -2,6 +2,7 @@
 	// reading files from external URLs (better for non-local)
 	// smarter searching for errors on stack overflow
 	// integration with Syntax Center, other APIs
+	// explanation of the major types of errors, using a little popup
 
 
 var is_enabled = ""
@@ -89,15 +90,17 @@ function createDiv(e){
 	url = url.split(' ').join('+');
 	url += '+[javascript]';
 	var fontString_monospace = "'Courier New', Courier, monospace;"
-	div.innerHTML = '<table style="width:98%"><tr><td><a href="' + url + '" target="_blank"><img src="http://noamhacker.com/SO-icon.png" style="width:40px;"></a></td><td><a href="' + url + '" target="_blank"><q_o_title>Uncaught ' 
+	div.innerHTML = '<table style="width:98%;"><tr><td style="width:50px;"><a href="' + url + '" target="_blank">'
+			+ '<img src="http://noamhacker.com/SO-icon.png" style="width:40px;"></a></td>'
+			+ '<td><a href="' + url + '" target="_blank"><q_o_title>Uncaught ' 
 			+ e.detail.title + '</q_o_title><br>' 
-			+ e.detail.message + '</a></td><td style="text-align:right"><button onclick="hideElement(this)">Dismiss</button></td></tr></table><br>' 
-			+ "Error caused by: <br><br>"
+			+ e.detail.message + '</a></td><td style="text-align:right"><button onclick="hideElement(this)">Dismiss</button></td></tr></table>' 
+			+ "<p>Error caused by: </p>"
 			+ '<div id="bad_code_here" style="font-family:' + fontString_monospace 
 						+ ' color:red; font-size:18px; border:1px solid red; border-radius:10px; padding:10px;"></div><br>'
 			+ cause + "<br>"
-			+ e.detail.filename + '<br>Line: ' 
-			+ e.detail.lineNumber;
+			+ '<table style="width:100%;"><tr><td>' + e.detail.filename + '</td><td>Line: ' 
+			+ e.detail.lineNumber + '</td></tr></table>';
 	
 	// create a function to hide the div
 	var script = document.createElement("SCRIPT");
