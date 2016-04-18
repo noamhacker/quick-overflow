@@ -14,7 +14,9 @@
     	"storage"
   	],
     "web_accessible_resources": [
-      "custom.css"
+      "custom.css",
+      "SO-icon.png",
+      "info-icon.png"
     ],
   	"content_scripts": [
   		{

@@ -5,7 +5,7 @@
 	// explanation of the major types of errors, using a little popup
 
 
-var is_enabled = ""
+var is_enabled = "";
 
 inject_listen_insert();
 
@@ -36,6 +36,15 @@ function inject_listen_insert(){
 }
 
 function createDiv(e){
+
+	// provide explanations for the core error types
+	var core_errors = [
+		"TypeError",
+		"ReferenceError",
+		"RangeError",
+		"SyntaxError",
+		"URIError"
+	]
 
 	var div = document.createElement("div");
 	div.setAttribute('class', "extension_module");
@@ -90,22 +99,42 @@ function createDiv(e){
 	url = url.split(' ').join('+');
 	url += '+[javascript]';
 	var fontString_monospace = "'Courier New', Courier, monospace;"
-	div.innerHTML = '<table style="width:98%;"><tr><td style="width:50px;"><a href="' + url + '" target="_blank">'
-			+ '<img src="http://noamhacker.com/SO-icon.png" style="width:40px;"></a></td>'
+	module_string = '<table style="width:98%;"><tr><td style="width:50px;"><a href="' + url + '" target="_blank">'
+			+ '<img src="SO-icon.png" style="width:40px;"></a></td>'
 			+ '<td><a href="' + url + '" target="_blank"><q_o_title>Uncaught ' 
 			+ e.detail.title + '</q_o_title><br>' 
-			+ e.detail.message + '</a></td><td style="text-align:right"><button onclick="hideElement(this)">Dismiss</button></td></tr></table>' 
+			+ e.detail.message + '</a></td>'
+	// add an info button if applicable		
+	for (i = 0; i < core_errors.length; i++){
+		if (e.detail.title.startsWith(core_errors[i])){
+			module_string += '<td><span class="info_link" onclick="show_info(this, ' + i + ')">'
+			+ '<img src="info-icon.png" style="width:34px;"></span class="info_link"></td>'
+		}
+	}
+	module_string += ""
+			+ '<td style="text-align:right"><button onclick="hideElement(this)">Dismiss</button></td></tr></table>' 
 			+ "<p>Error caused by: </p>"
 			+ '<div id="bad_code_here" style="font-family:' + fontString_monospace 
 						+ ' color:red; font-size:18px; border:1px solid red; border-radius:10px; padding:10px;"></div><br>'
 			+ cause + "<br>"
 			+ '<table style="width:100%;"><tr><td>From: ' + e.detail.filename + '</td><td>Line: ' 
 			+ e.detail.lineNumber + '</td></tr></table>';
-	
+	div.innerHTML = module_string
+
 	// create a function to hide the div
 	var script = document.createElement("SCRIPT");
 	var hideFunction = document.createTextNode("function hideElement(element){element.parentNode.parentNode.parentNode.parentNode.parentNode.remove()}");
 	script.appendChild(hideFunction);
+	// create a function to show error info
+	var script_array = 'var core_errors_info = ['
+		script_array += '"A variable or parameter is not of a valid type.",'
+		script_array += '"Attempt to de-reference an invalid reference.",'
+		script_array += '"A numeric variable or parameter is outside of its valid range.",'
+		script_array += '"Code cannot be parsed correctly.",'
+		script_array += '"encodeURI() or decodeURI() were passed invalid parameters."'
+	script_array += '];'
+	var infoFunction = document.createTextNode('function show_info(icon, message){'+script_array+'icon.parentNode.innerHTML=core_errors_info[message];icon.remove();}');
+	script.appendChild(infoFunction);
 
 	// add a blank span to the head so we can append our module to the head (in case the head is empty)
 	var empty_span = document.createElement("span")

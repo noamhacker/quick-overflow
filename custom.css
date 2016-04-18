@@ -6,6 +6,10 @@ q_o_title {
 	font-size: 24px;
 }
 
+.info_link {
+	cursor:pointer;
+}
+
 .extension_module {
 	margin-top: 10px;
 	width: 92%;

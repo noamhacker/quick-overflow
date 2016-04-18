@@ -5,7 +5,6 @@
 	<button onclick="myFunction4()">RangeError 2</button>
 	<button onclick="myFunction5()">URIeError</button>
 	<button onclick="throwSomething()">Throw Custom Error</button>
-	<button onclick="myFunction6()">assign this</button>
 </body>
 <script src="test-errors.js"></script>
 <script>
@@ -47,7 +46,9 @@
 		x = encodeURI('\uD800')
 	}
 
-	function myFunction6(){}
+	/*function myFunction6(){
+		this = 2;
+	}*/
 
 	//HELPFUL
 	//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error
