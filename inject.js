@@ -121,7 +121,6 @@ function createDiv(e){
 			+ cause + "<br>"
 			+ '<table style="width:100%;"><tr><td>From: ' + e.detail.filename + '</td><td>Line: ' 
 			+ e.detail.lineNumber + '</td></tr></table>';
-	div.innerHTML = module_string
 
 	// create a function to hide the div
 	var script = document.createElement("SCRIPT");
@@ -138,6 +137,10 @@ function createDiv(e){
 	var infoFunction = document.createTextNode('function show_info(icon, message){'+script_array+'icon.parentNode.innerHTML=core_errors_info[message];icon.remove();}');
 	script.appendChild(infoFunction);
 
+	// put the module and the script in the div (if we keep the script outside of the div, we'll keep creating multiple scripts)
+	div.innerHTML = module_string;
+	div.appendChild(script);
+
 	// add a blank span to the head so we can append our module to the head (in case the head is empty)
 	var empty_span = document.createElement("span")
 	empty_span.setAttribute("class", "ignore_me")
@@ -146,7 +149,6 @@ function createDiv(e){
 	// document.body.appendChild(div); - this is not what we want
 	// want to prepend instead of append... http://callmenick.com/post/prepend-child-javascript
 	var head = document.querySelector("head");
-	head.insertBefore(script, head.firstChild);
 	head.insertBefore(div, head.firstChild);
 
 	// we don't want to render the html that is in the bad code, just the text, so we must use textContent
