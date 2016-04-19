@@ -125,7 +125,7 @@ function createDiv(e){
 
 	// create a function to hide the div
 	var script = document.createElement("SCRIPT");
-	var hideFunction = document.createTextNode("function hideElement(element){element.parentNode.parentNode.parentNode.parentNode.parentNode.remove()}");
+	var hideFunction = document.createTextNode("function hideElement(element){element.parentNode.parentNode.parentNode.parentNode.parentNode.remove();}");
 	script.appendChild(hideFunction);
 	// create a function to show error info
 	var script_array = 'var core_errors_info = ['
@@ -145,9 +145,9 @@ function createDiv(e){
 
 	// document.body.appendChild(div); - this is not what we want
 	// want to prepend instead of append... http://callmenick.com/post/prepend-child-javascript
-	var body = document.querySelector("head");
-	body.insertBefore(script, body.firstChild);
-	body.insertBefore(div, body.firstChild);
+	var head = document.querySelector("head");
+	head.insertBefore(script, head.firstChild);
+	head.insertBefore(div, head.firstChild);
 
 	// we don't want to render the html that is in the bad code, just the text, so we must use textContent
 	document.getElementById("bad_code_here").textContent = badCode;
