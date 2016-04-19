@@ -29,7 +29,9 @@ q_o_title {
 .extension_module table tbody {}
 .extension_module table tbody tr {}
 .extension_module table tbody tr td {}
+.extension_module table tbody tr td img {}
 .extension_module table tbody tr td a {}
+.extension_module table tbody tr td a img {}
 .extension_module table tbody tr td a, span.link {
   color: blue;
 }
