@@ -99,16 +99,18 @@ function createDiv(e){
 	url = url.split(' ').join('+');
 	url += '+[javascript]';
 	var fontString_monospace = "'Courier New', Courier, monospace;"
+	var so_icon_url = chrome.extension.getURL('so-icon.png')
 	module_string = '<table style="width:98%;"><tr><td style="width:50px;"><a href="' + url + '" target="_blank">'
-			+ '<img src="SO-icon.png" style="width:40px;"></a></td>'
+			+ '<img src="' + so_icon_url + '" style="width:40px;"></a></td>'
 			+ '<td><a href="' + url + '" target="_blank"><q_o_title>Uncaught ' 
 			+ e.detail.title + '</q_o_title><br>' 
 			+ e.detail.message + '</a></td>'
-	// add an info button if applicable		
+	// add an info button if applicable
+	var info_icon_url = chrome.extension.getURL('info-icon.png')
 	for (i = 0; i < core_errors.length; i++){
 		if (e.detail.title.startsWith(core_errors[i])){
 			module_string += '<td><span class="info_link" onclick="show_info(this, ' + i + ')">'
-			+ '<img src="info-icon.png" style="width:34px;"></span class="info_link"></td>'
+			+ '<img src="' + info_icon_url + '" style="width:34px;"></span class="info_link"></td>'
 		}
 	}
 	module_string += ""
