@@ -11,6 +11,8 @@ This module contains:
 
 The extension can listen for errors on any website, but can also be easily disabled for when you want to browse the web in peace.
 
+Download the test webpage [here](https://github.com/noamhacker/quick-overflow/blob/master/test-errors.html).
+
 <hr>
 ![Sreenshot of extension](https://github.com/noamhacker/quick-overflow/blob/master/quick-overflow-screenshot.png)
 
