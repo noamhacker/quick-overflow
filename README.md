@@ -4,3 +4,4 @@ Every time Quick Overflow detects an error in your javascript, it embeds an "err
 This module contains an explanation of your error, the code that caused it, and a one-click Stack Overflow search for relevant solutions.
 
 The extension can listen for errors on any website, but can also be easily disabled for when you want to browse the web in peace.
+![Sreenshot of extension](https://github.com/noamhacker/quick-overflow/blob/master/quick-overflow-screenshot.png)
