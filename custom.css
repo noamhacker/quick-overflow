@@ -17,7 +17,7 @@ q_o_title {
 	margin-right: auto;
 	border: 1px solid red;
 	box-shadow: 10px 10px 40px #888888;
-	z-index: 999;
+	z-index: 9999;
 	background-color: #ffb734;
 	border-radius: 25px;
 	padding: 20px;
