@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "Quick Overflow",
-	"description": "Quickly finds, understand, and solve your JavaScript errors",
+	"description": "Quickly find, understand, and solve your JavaScript errors",
 	"version": "1.0",
 	"browser_action": {
 		"default_icon": "icon3.png",
