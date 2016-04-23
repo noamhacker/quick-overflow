@@ -20,6 +20,7 @@ Quick Overflow in action:
 
 Make sure to enable the extension by clicking the icon. Visit chrome://extensions to "Allow access to file URLs" - this allows the extension to listen for errors when you are developing locally.
 ![Enable the extension](https://github.com/noamhacker/quick-overflow/blob/master/promo%20images/screenshot%202.jpg)
+The extension <strong>will not</strong> work on local files unless this box is checked.
 
 One click away from relevant solutions on Stack Overflow:
 ![Searching Stack Overflow](https://github.com/noamhacker/quick-overflow/blob/master/promo%20images/screenshot%203.jpg)
