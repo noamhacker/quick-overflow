@@ -14,6 +14,11 @@ The extension can listen for errors on any website, but can also be easily disab
 Download the test webpage [here](https://raw.githubusercontent.com/noamhacker/quick-overflow/master/test-errors.html) (save it as a .html file, and open it in chrome).
 
 <hr>
-![Sreenshot of extension](https://github.com/noamhacker/quick-overflow/blob/master/quick-overflow-screenshot.png)
+Make sure to enable the extension by clicking the icon. Visit chrome://extensions to "Allow access to file URLs" - this allows the extension to listen for errors when you are developing locally.
+![Enable the extension](https://github.com/noamhacker/quick-overflow/blob/master/promo%20images/screenshot%202.jpg)
 
-![Extension popup](https://github.com/noamhacker/quick-overflow/blob/master/quick-overflow-screenshot-2.png)
+Quick Overflow in action:
+![Sreenshot of extension](https://github.com/noamhacker/quick-overflow/blob/master/promo%20images/screenshot%201.jpg)
+
+One click away from relevant solutions on Stack Overflow:
+![Searching Stack Overflow](https://github.com/noamhacker/quick-overflow/blob/master/promo%20images/screenshot%203.jpg)
