@@ -2,7 +2,6 @@
 	// reading files from external URLs (better for non-local)
 	// smarter searching for errors on stack overflow
 	// integration with Syntax Center, other APIs
-	// explanation of the major types of errors, using a little popup
 
 
 var is_enabled = "";
