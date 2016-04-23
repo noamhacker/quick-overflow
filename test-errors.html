@@ -8,25 +8,6 @@
 </body>
 <script src="test-errors.js"></script>
 <script>
-	// Create an object type UserException
-	function UserException(message) {
-	  this.message = message;
-	  this.name = "UserException";
-	}
-	// Make the exception convert to a pretty string when used as a string 
-	// (e.g. by the error console)
-	UserException.prototype.toString = function() {
-	  return this.name + ': "' + this.message + '"';
-	}
-	function throwSomething(){
-		// Create an instance of the object type and throw it
-		throw new UserException("Value too high");
-	}
-
-	//console.log("hi)
-
-
-
 
 	function myFunction2(){
 		myArray = [];
@@ -49,6 +30,23 @@
 	/*function myFunction6(){
 		this = 2;
 	}*/
+	
+	
+	// Create an object type UserException
+	function UserException(message) {
+	  this.message = message;
+	  this.name = "UserException";
+	}
+	// Make the exception convert to a pretty string when used as a string 
+	// (e.g. by the error console)
+	UserException.prototype.toString = function() {
+	  return this.name + ': "' + this.message + '"';
+	}
+	function throwSomething(){
+		// Create an instance of the object type and throw it
+		throw new UserException("Value too high");
+	}
+
 
 	//HELPFUL
 	//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error
