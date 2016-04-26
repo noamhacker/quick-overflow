@@ -2,7 +2,7 @@
 	// reading files from external URLs (better for non-local)
 	// smarter searching for errors on stack overflow
 	// integration with Syntax Center, other APIs
-
+	// css tabs for all errors, instead of stacking many (https://css-tricks.com/css3-tabs/)
 
 var is_enabled = "";
 
