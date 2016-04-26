@@ -26,3 +26,6 @@ The extension <strong>will not</strong> work on local files unless this box is c
 
 One click away from relevant solutions on Stack Overflow:
 ![Searching Stack Overflow](https://github.com/noamhacker/quick-overflow/blob/master/promo%20images/screenshot%203.jpg)
+
+Contributors welcome :)
+* `git clone`, or download the zip file to get started.
