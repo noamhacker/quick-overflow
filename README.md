@@ -1,6 +1,7 @@
 # Quick Overflow
 ##### Version 1.1 - [Download here!](https://chrome.google.com/webstore/detail/quick-overflow/kjjiidpkmljgchgkcjlbcbjbaangmobk)
 <img src="https://github.com/noamhacker/quick-overflow/blob/master/logo%202.png" width="250">
+
 #### Quick Overflow is a chrome extension which helps you quickly find, understand, and solve your javascript errors. 
 Every time Quick Overflow detects an error in your javascript, it embeds an "error module" at the top of your webpage. 
 
